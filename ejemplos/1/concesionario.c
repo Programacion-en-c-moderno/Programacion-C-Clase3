@@ -44,13 +44,13 @@ void curso_concesionario_attr_unset_coche(struct concesionario *con,
 	int i = 0;
 	struct coche *c, *tmp;
 
-	if (pos > 0 && pos > con->num_coches)
+	if (pos < 0 || pos > con->num_coches)
 		return;
 
 	list_for_each_entry_safe(c, tmp, &con->garaje, head) {
 		if (i == pos) {
 			list_del(&c->head);
-			xfree(c);
+			curso_coche_free(c);
 			break;
 		}
 
