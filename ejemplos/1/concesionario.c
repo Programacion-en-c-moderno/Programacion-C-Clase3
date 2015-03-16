@@ -19,6 +19,8 @@ struct concesionario *curso_concesionario_alloc(void)
 
 	INIT_LIST_HEAD(&con->garaje);
 
+	con->flags |= (1 << CURSO_CONCESIONARIO_ATTR_NUM_COCHES);
+
 	return con;
 }
 
